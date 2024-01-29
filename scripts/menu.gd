@@ -25,6 +25,10 @@ func _ready():
 		button.mouse_entered.connect(_on_button_mouse_entered.bind(button))
 		button.mouse_exited.connect(_on_button_mouse_exited.bind(button))
 	
+	# Hide quit button if playing a web build
+	$ButtonQuit.set_visible(
+			not OS.has_feature("web"))
+	
 	Audio.get_node("Music").stop()
 
 
@@ -36,9 +40,9 @@ func _process(delta):
 func _spin_title(delta: float) -> void:
 	# Update rotation and scale with a cosine wave for a smooth animation.
 	var rotation_value: float = cos(
-			time * TITLE_ROTATION_SPEED) * TITLE_ROTATION_AMOUNT
+			time * TITLE_ROTATION_SPEED) * TITLE_ROTATION_AMOUNT * (delta * 60)
 	var scale_value: float = (cos(
-			time) * TITLE_SCALE_AMOUNT) + TITLE_SCALE_OFFSET
+			time) * TITLE_SCALE_AMOUNT) + TITLE_SCALE_OFFSET * (delta * 60)
 	
 	title_node.rotation_degrees = rotation_value
 	title_node.scale = Vector2(scale_value, scale_value)
