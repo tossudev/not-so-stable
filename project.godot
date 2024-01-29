@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Not so stable"
+config/description="A tiny game made as practice for a game making competition."
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

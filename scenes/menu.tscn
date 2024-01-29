@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_76idf"]
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_sjw48"]
-[ext_resource type="Texture2D" uid="uid://cruc742to1j3o" path="res://assets/textures/background/5 - Sky_color.png" id="2_tmyja"]
-[ext_resource type="Texture2D" uid="uid://dr77n7odb0t5n" path="res://assets/textures/background/4 - Background_clouds.png" id="3_d5c56"]
-[ext_resource type="Texture2D" uid="uid://dmbcu3kuqieat" path="res://assets/textures/background/2 - Waters_version_2.png" id="4_5nu0b"]
-[ext_resource type="Texture2D" uid="uid://sog66sduwk3o" path="res://assets/textures/background/3 - Floating_clouds.png" id="5_oh8hn"]
+[ext_resource type="Texture2D" uid="uid://cruc742to1j3o" path="res://assets/textures/background/bg_sky.png" id="2_tmyja"]
+[ext_resource type="Texture2D" uid="uid://dr77n7odb0t5n" path="res://assets/textures/background/bg_clouds.png" id="3_d5c56"]
+[ext_resource type="Texture2D" uid="uid://dmbcu3kuqieat" path="res://assets/textures/background/bg_water.png" id="4_5nu0b"]
+[ext_resource type="Texture2D" uid="uid://sog66sduwk3o" path="res://assets/textures/background/bg_clouds_sky.png" id="5_oh8hn"]
 [ext_resource type="Texture2D" uid="uid://d2sf7q140ggi6" path="res://assets/textures/tiles/tiles.png" id="6_y0plg"]
 [ext_resource type="FontFile" uid="uid://3aud74th7ida" path="res://assets/textures/ui/at01.ttf" id="8_x0ais"]
 

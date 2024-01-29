@@ -5,6 +5,8 @@ const BUTTON_SCALE_BIG: float = 1.2
 
 const BUTTON_ANIM_SPEED: float = 0.6
 
+var exiting_scene: bool = false
+
 
 func _ready():
 	# Connect button press signals for all buttons in scene.
@@ -16,10 +18,12 @@ func _ready():
 
 
 func _on_button_start_pressed():
+	exiting_scene = true
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 
 func _on_button_quit_pressed():
+	exiting_scene = true
 	get_tree().quit()
 
 
@@ -38,6 +42,10 @@ func _on_button_mouse_exited(button: Button):
 
 
 func _do_scale_anim(node: Node, new_scale: Vector2):
+	# Don't start tween if exiting scene.
+	if exiting_scene:
+		return
+	
 	var tween = get_tree().create_tween()
 	
 	# Tween scales node to new scale using the button animation speed and elastic easing.

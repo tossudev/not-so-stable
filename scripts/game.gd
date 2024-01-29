@@ -7,7 +7,7 @@ const TOWER_WEIGHT_WARNING: float = 25.0
 const TOWER_WEIGHT_OVERLOAD: float = 35.0
 const WEIGHT_EXP: float = 1.5 # Exponential growth of weight (distance from center)
 const WEIGHT_DIVIDER: float = 10.0 # Divide base weight with this.
-const TOWER_ROTATION_SPEED: float = 0.2
+const TOWER_ROTATION_SPEED: float = 0.05
 const TOWER_WEIGHTS: Array = [ # Define all possible weights
 	1.0,
 	2.0
@@ -19,6 +19,7 @@ const TOWER_ICON_TEXTURES: Array = [
 
 @onready var character_scene = preload("res://scenes/character.tscn")
 
+static var mouse_pos: Vector2
 var mouse_on_platform: bool = false
 
 var is_placing_character: bool = false
@@ -75,7 +76,7 @@ func define_new_character() -> void:
 
 
 func _update_placement() -> void:
-	var mouse_pos = get_global_mouse_position()
+	mouse_pos = get_global_mouse_position()
 	
 	# Toggle visibility on UI elements based on character visibility.
 	placement_sprite_node.visible = is_placing_character
@@ -189,6 +190,9 @@ func _get_nearest_platform() -> Object:
 	for pos_node: Marker2D in current_platform.get_node("Positions").get_children():
 		platforms.append(pos_node)
 	
+	# Update mouse position
+	mouse_pos = get_global_mouse_position()
+	
 	# Sort positions by nearest to furthest
 	platforms.sort_custom(sort_by_nearest)
 	
@@ -197,9 +201,8 @@ func _get_nearest_platform() -> Object:
 	return nearest_platform
 
 
-func sort_by_nearest(a, b):
+static func sort_by_nearest(a, b):
 	# Sort objects by nearest to mouse position.
-	var mouse_pos = get_global_mouse_position()
 	if mouse_pos.distance_to(a.global_position) < mouse_pos.distance_to(b.global_position):
 		return true
 	return false
@@ -219,7 +222,7 @@ func _lose_game() -> void:
 
 func _on_new_character_button_pressed():
 	# When new character button is pressed, select new character
-	if is_placing_character:
+	if is_placing_character or game_over:
 		return
 	
 	is_placing_character = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sog66sduwk3o"
-path="res://.godot/imported/3 - Floating_clouds.png-3e1bcf168a2f2e1f9e8e5e0431435f01.ctex"
+uid="uid://dmbcu3kuqieat"
+path="res://.godot/imported/bg_water.png-1599ce99dc25724b5457a35abda68ef9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/background/3 - Floating_clouds.png"
-dest_files=["res://.godot/imported/3 - Floating_clouds.png-3e1bcf168a2f2e1f9e8e5e0431435f01.ctex"]
+source_file="res://assets/textures/background/bg_water.png"
+dest_files=["res://.godot/imported/bg_water.png-1599ce99dc25724b5457a35abda68ef9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmbcu3kuqieat"
-path="res://.godot/imported/2 - Waters_version_2.png-f1784b188ed08aa919d57172cb45ba2e.ctex"
+uid="uid://cruc742to1j3o"
+path="res://.godot/imported/bg_sky.png-a1bcbc96b32125c2627e47ca235174ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/background/2 - Waters_version_2.png"
-dest_files=["res://.godot/imported/2 - Waters_version_2.png-f1784b188ed08aa919d57172cb45ba2e.ctex"]
+source_file="res://assets/textures/background/bg_sky.png"
+dest_files=["res://.godot/imported/bg_sky.png-a1bcbc96b32125c2627e47ca235174ef.ctex"]
 
 [params]
 
