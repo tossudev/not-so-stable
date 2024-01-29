@@ -1,11 +1,22 @@
 extends Node2D
 
+const TITLE_ROTATION_SPEED: float = 2.5
+const TITLE_ROTATION_AMOUNT: float = 2.0
+
+const TITLE_SCALE_AMOUNT: float = 0.13
+const TITLE_SCALE_OFFSET: float = 1.0
+
 const BUTTON_SCALE_NORMAL: float = 1.0
 const BUTTON_SCALE_BIG: float = 1.2
 
 const BUTTON_ANIM_SPEED: float = 0.6
 
+# Time passed since start
+var time: float = 0.0
 var exiting_scene: bool = false
+
+# Object references
+@onready var title_node: Label = $Title
 
 
 func _ready():
@@ -15,6 +26,22 @@ func _ready():
 		button.mouse_exited.connect(_on_button_mouse_exited.bind(button))
 	
 	Audio.get_node("Music").stop()
+
+
+func _process(delta):
+	time += delta
+	_spin_title(delta)
+
+
+func _spin_title(delta: float) -> void:
+	# Update rotation and scale with a cosine wave for a smooth animation.
+	var rotation_value: float = cos(
+			time * TITLE_ROTATION_SPEED) * TITLE_ROTATION_AMOUNT
+	var scale_value: float = (cos(
+			time) * TITLE_SCALE_AMOUNT) + TITLE_SCALE_OFFSET
+	
+	title_node.rotation_degrees = rotation_value
+	title_node.scale = Vector2(scale_value, scale_value)
 
 
 func _on_button_start_pressed():

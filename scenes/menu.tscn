@@ -18,17 +18,31 @@ script = ExtResource("1_76idf")
 
 [node name="Credits" type="Label" parent="."]
 z_index = 200
-offset_left = -160.0
+offset_left = -157.0
 offset_top = 104.0
-offset_right = -128.0
+offset_right = -57.0
 offset_bottom = 120.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("8_x0ais")
 theme_override_font_sizes/font_size = 16
-text = "Tossu"
-horizontal_alignment = 1
+text = "Made by Tossu"
+vertical_alignment = 1
+
+[node name="Credits2" type="Label" parent="."]
+z_index = 200
+offset_left = 24.0
+offset_top = 104.0
+offset_right = 157.0
+offset_bottom = 120.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("8_x0ais")
+theme_override_font_sizes/font_size = 16
+text = "Graphical assets by GrafxKid"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Background" type="Node2D" parent="."]
@@ -1135,6 +1149,7 @@ vertical_alignment = 1
 offset_left = -128.0
 offset_top = -120.0
 offset_right = 128.0
+pivot_offset = Vector2(128, 67)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
