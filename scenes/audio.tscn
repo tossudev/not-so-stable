@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6on1y33sgrsk"]
+
+[ext_resource type="AudioStream" uid="uid://ca5ln227466xo" path="res://assets/background_noise.mp3" id="1_hxprn"]
+[ext_resource type="AudioStream" uid="uid://cbvo57gqf7fl" path="res://assets/music.mp3" id="2_yps4j"]
+
+[node name="Audio" type="Node"]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hxprn")
+volume_db = -6.0
+autoplay = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yps4j")
+volume_db = -4.0

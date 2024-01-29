@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://3gxcw6u6scks"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r12o7"]
+load_path = "res://.godot/imported/emote_bubbles.png-08e7d17d832b625271f0d68a6f86166e.ctex"
+
+[resource]
+atlas = SubResource("CompressedTexture2D_r12o7")
+region = Rect2(80, 0, 16, 16)

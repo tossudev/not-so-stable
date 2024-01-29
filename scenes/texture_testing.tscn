@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmktlm6xhxk48"]
+
+[ext_resource type="Texture2D" uid="uid://d2sf7q140ggi6" path="res://assets/textures/tiles/tiles.png" id="1_btxrh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxmsu"]
+atlas = ExtResource("1_btxrh")
+
+[node name="TextureTesting" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_wxmsu")

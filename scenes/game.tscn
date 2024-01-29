@@ -1,0 +1,1352 @@
+[gd_scene load_steps=20 format=3 uid="uid://yhubxvgdxyhy"]
+
+[ext_resource type="Texture2D" uid="uid://cruc742to1j3o" path="res://assets/textures/background/5 - Sky_color.png" id="1_ecfgh"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_mp120"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_sqh2a"]
+[ext_resource type="Texture2D" uid="uid://dr77n7odb0t5n" path="res://assets/textures/background/4 - Background_clouds.png" id="2_jc1s5"]
+[ext_resource type="Texture2D" uid="uid://dmbcu3kuqieat" path="res://assets/textures/background/2 - Waters_version_2.png" id="3_mnwpr"]
+[ext_resource type="Texture2D" uid="uid://sog66sduwk3o" path="res://assets/textures/background/3 - Floating_clouds.png" id="4_eq45a"]
+[ext_resource type="Texture2D" uid="uid://d2sf7q140ggi6" path="res://assets/textures/tiles/tiles.png" id="5_1fpye"]
+[ext_resource type="Script" path="res://scripts/tower.gd" id="7_xfurw"]
+[ext_resource type="Script" path="res://scripts/ui_overlay.gd" id="9_f0dfx"]
+[ext_resource type="Texture2D" uid="uid://33qpolyk7vaf" path="res://assets/textures/characters/char1/idle.png" id="9_s2ljs"]
+[ext_resource type="FontFile" uid="uid://3aud74th7ida" path="res://assets/textures/ui/at01.ttf" id="10_6k425"]
+[ext_resource type="Texture2D" uid="uid://b4mtiryat1ha3" path="res://assets/textures/ui/emote_bubbles.png" id="10_lkvl2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrlgq"]
+atlas = ExtResource("5_1fpye")
+region = Rect2(184, 88, 64, 24)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_haqpw"]
+texture = ExtResource("5_1fpye")
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+9:3/0 = 0
+11:3/0 = 0
+13:3/0 = 0
+15:3/0 = 0
+12:5/0 = 0
+14:5/0 = 0
+12:6/0 = 0
+14:6/0 = 0
+12:7/0 = 0
+14:7/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pfgj4"]
+sources/0 = SubResource("TileSetAtlasSource_haqpw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkcfn"]
+size = Vector2(192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44851"]
+atlas = ExtResource("9_s2ljs")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1q7k"]
+atlas = ExtResource("9_s2ljs")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxg3c"]
+atlas = ExtResource("10_lkvl2")
+region = Rect2(32, 0, 16, 16)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_sqh2a")
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("1_mp120")
+
+[node name="Sky" type="Node2D" parent="Background"]
+
+[node name="Sprite" type="Sprite2D" parent="Background/Sky"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("1_ecfgh")
+region_enabled = true
+region_rect = Rect2(0, 0, 960, 240)
+
+[node name="Clouds" type="Node2D" parent="Background"]
+position = Vector2(0, 32)
+
+[node name="Sprite" type="Sprite2D" parent="Background/Clouds"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("2_jc1s5")
+region_enabled = true
+region_rect = Rect2(0, 0, 960, 240)
+
+[node name="Water" type="Node2D" parent="Background"]
+position = Vector2(0, 32)
+
+[node name="Sprite" type="Sprite2D" parent="Background/Water"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("3_mnwpr")
+region_enabled = true
+region_rect = Rect2(0, 0, 960, 240)
+
+[node name="CloudsFG" type="Node2D" parent="Background"]
+
+[node name="Sprite" type="Sprite2D" parent="Background/CloudsFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, -16)
+texture = ExtResource("4_eq45a")
+region_enabled = true
+region_rect = Rect2(0, 0, 960, 208)
+
+[node name="WaterFG" type="Node2D" parent="Background"]
+modulate = Color(1, 1, 1, 0.5)
+z_index = 100
+
+[node name="Sprite" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-160, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite2" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-144, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite3" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-128, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite4" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-112, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite5" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-96, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite6" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-80, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite7" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-64, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite8" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-48, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite9" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-32, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite10" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-16, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite11" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite12" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite13" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(32, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite14" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(48, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite15" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(64, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite16" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(80, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite17" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(96, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite18" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(112, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite19" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(128, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite20" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(144, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite21" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(160, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite22" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-160, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite23" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-144, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite24" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-128, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite25" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-112, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite26" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-96, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite27" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-80, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite28" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-64, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite29" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-48, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite30" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-32, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite31" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-16, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite32" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite33" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite34" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(32, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite35" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(48, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite36" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(64, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite37" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(80, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite38" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(96, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite39" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(112, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite40" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(128, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite41" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(144, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite42" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(160, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite43" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(176, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite44" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(192, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite45" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(208, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite46" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(224, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite47" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(240, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite48" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(256, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite49" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(272, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite50" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(288, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite51" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(304, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite52" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(320, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite53" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(336, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite54" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(352, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite55" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(368, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite56" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(384, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite57" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(400, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite58" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(416, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite59" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(432, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite60" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(448, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite61" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(464, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite62" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(480, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite63" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(496, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite64" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(176, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite65" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(192, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite66" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(208, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite67" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(224, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite68" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(240, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite69" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(256, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite70" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(272, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite71" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(288, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite72" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(304, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite73" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(320, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite74" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(336, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite75" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(352, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite76" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(368, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite77" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(384, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite78" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(400, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite79" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(416, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite80" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(432, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite81" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(448, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite82" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(464, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite83" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(480, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite84" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(496, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite85" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-496, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite86" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-480, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite87" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-464, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite88" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-448, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite89" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-432, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite90" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-416, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite91" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-400, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite92" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-384, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite93" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-368, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite94" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-352, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite95" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-336, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite96" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-320, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite97" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-304, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite98" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-288, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite99" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-272, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite100" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-256, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite101" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-240, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite102" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-224, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite103" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-208, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite104" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-192, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite105" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-176, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite106" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-496, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite107" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-480, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite108" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-464, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite109" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-448, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite110" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-432, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite111" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-416, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite112" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-400, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite113" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-384, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite114" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-368, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite115" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-352, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite116" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-336, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite117" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-320, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite118" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-304, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite119" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-288, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite120" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-272, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite121" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-256, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite122" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-240, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite123" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-224, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite124" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-208, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite125" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-192, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Sprite126" type="Sprite2D" parent="Background/WaterFG"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-176, 112)
+texture = SubResource("AtlasTexture_hrlgq")
+hframes = 2
+region_rect = Rect2(0, 0, 333.55, 64)
+
+[node name="Tower" type="Node2D" parent="."]
+position = Vector2(0, 120)
+script = ExtResource("7_xfurw")
+
+[node name="Tiles" type="TileMap" parent="Tower"]
+texture_filter = 1
+position = Vector2(-8, 0)
+tile_set = SubResource("TileSet_pfgj4")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 851968, 3, -131072, 851968, 3, -196608, 851968, 3, -262144, 851968, 3, -327680, 851968, 2, -393216, 851968, 3, -458752, 851968, 3, -524288, 851968, 2, -589824, 851968, 3, -655360, 851968, 3, -720896, 851968, 2, -655361, 786432, 2, -655362, 786432, 2, -655363, 786432, 2, -655364, 786432, 2, -655365, 786432, 2, -720895, 786432, 2, -720894, 786432, 2, -720893, 786432, 2, -720892, 786432, 2, -720891, 786432, 2, -458753, 786432, 2, -458757, 786432, 2, -458756, 786432, 2, -458755, 786432, 2, -458754, 786432, 2, -524287, 786432, 2, -524286, 786432, 2, -524285, 786432, 2, -524284, 786432, 2, -524283, 786432, 2, -327675, 786432, 2, -327676, 786432, 2, -327677, 786432, 2, -327678, 786432, 2, -327679, 786432, 2, -262149, 786432, 2, -262148, 786432, 2, -262147, 786432, 2, -262146, 786432, 2, -262145, 786432, 2, 0, 851968, 3, 65536, 851968, 3)
+
+[node name="Platforms" type="Node2D" parent="Tower"]
+
+[node name="Platform" type="Area2D" parent="Tower/Platforms"]
+position = Vector2(0, -176)
+
+[node name="Area" type="CollisionShape2D" parent="Tower/Platforms/Platform"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_hkcfn")
+
+[node name="Positions" type="Node2D" parent="Tower/Platforms/Platform"]
+
+[node name="Pos1" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(-72, 0)
+
+[node name="Pos2" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(-56, 0)
+
+[node name="Pos3" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(-40, 0)
+
+[node name="Pos4" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(-24, 0)
+
+[node name="Pos5" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(-8, 0)
+
+[node name="Pos6" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(8, 0)
+
+[node name="Pos7" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(24, 0)
+
+[node name="Pos8" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(40, 0)
+
+[node name="Pos9" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(56, 0)
+
+[node name="Pos10" type="Marker2D" parent="Tower/Platforms/Platform/Positions"]
+position = Vector2(72, 0)
+
+[node name="Platform2" type="Area2D" parent="Tower/Platforms"]
+position = Vector2(0, -128)
+
+[node name="Area" type="CollisionShape2D" parent="Tower/Platforms/Platform2"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_hkcfn")
+
+[node name="Positions" type="Node2D" parent="Tower/Platforms/Platform2"]
+
+[node name="Pos1" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(-72, 0)
+
+[node name="Pos2" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(-56, 0)
+
+[node name="Pos3" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(-40, 0)
+
+[node name="Pos4" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(-24, 0)
+
+[node name="Pos5" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(-8, 0)
+
+[node name="Pos6" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(8, 0)
+
+[node name="Pos7" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(24, 0)
+
+[node name="Pos8" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(40, 0)
+
+[node name="Pos9" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(56, 0)
+
+[node name="Pos10" type="Marker2D" parent="Tower/Platforms/Platform2/Positions"]
+position = Vector2(72, 0)
+
+[node name="Platform3" type="Area2D" parent="Tower/Platforms"]
+position = Vector2(0, -80)
+
+[node name="Area" type="CollisionShape2D" parent="Tower/Platforms/Platform3"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_hkcfn")
+
+[node name="Positions" type="Node2D" parent="Tower/Platforms/Platform3"]
+
+[node name="Pos1" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(-72, 0)
+
+[node name="Pos2" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(-56, 0)
+
+[node name="Pos3" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(-40, 0)
+
+[node name="Pos4" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(-24, 0)
+
+[node name="Pos5" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(-8, 0)
+
+[node name="Pos6" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(8, 0)
+
+[node name="Pos7" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(24, 0)
+
+[node name="Pos8" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(40, 0)
+
+[node name="Pos9" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(56, 0)
+
+[node name="Pos10" type="Marker2D" parent="Tower/Platforms/Platform3/Positions"]
+position = Vector2(72, 0)
+
+[node name="Camera" type="Camera2D" parent="."]
+z_index = 1000
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+script = ExtResource("9_f0dfx")
+
+[node name="NewCharacterButton" type="Button" parent="Overlay"]
+offset_left = 142.0
+offset_top = 198.0
+offset_right = 178.0
+offset_bottom = 234.0
+
+[node name="Texture" type="TextureRect" parent="Overlay/NewCharacterButton"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -14.0
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 34.0
+texture = SubResource("AtlasTexture_44851")
+stretch_mode = 3
+
+[node name="Score" type="Label" parent="Overlay"]
+offset_right = 320.0
+offset_bottom = 40.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_6k425")
+theme_override_font_sizes/font_size = 32
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinScreen" type="Node2D" parent="Overlay"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Background" type="ColorRect" parent="Overlay/WinScreen"]
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Text" type="Label" parent="Overlay/WinScreen"]
+offset_right = 320.0
+offset_bottom = 240.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_6k425")
+theme_override_font_sizes/font_size = 32
+text = "You Win!
+
+Press Enter or
+Space to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoseScreen" type="Node2D" parent="Overlay"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Background" type="ColorRect" parent="Overlay/LoseScreen"]
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Text" type="Label" parent="Overlay/LoseScreen"]
+modulate = Color(1, 0, 0, 1)
+offset_right = 320.0
+offset_bottom = 240.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_6k425")
+theme_override_font_sizes/font_size = 32
+text = "You Lost!
+
+Press Enter or
+Space to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlacementSprite" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.5)
+texture_filter = 1
+texture = SubResource("AtlasTexture_p1q7k")
+
+[node name="PlacementArrowSprite" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = SubResource("AtlasTexture_oxg3c")
+offset = Vector2(0, -8)
+
+[connection signal="pressed" from="Overlay/NewCharacterButton" to="." method="_on_new_character_button_pressed"]
